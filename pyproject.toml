@@ -1,0 +1,32 @@
+[tool.kedro]
+package_name = "kedro_test"
+project_name = "kedro-test"
+kedro_init_version = "0.18.11"
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+addopts = """
+--cov-report term-missing \
+--cov src/kedro_test -ra"""
+
+[tool.coverage.report]
+fail_under = 0
+show_missing = true
+exclude_lines = ["pragma: no cover", "raise NotImplementedError"]
+
+[tool.poetry]
+name = "kedro-test-project"
+version = "0.1"
+description = ""
+authors = ["Eagle Team"]
+readme = "README.md"
+packages = [
+    { include = "kedro_test", from = "./src" },
+]
+
+[tool.poetry.dependencies]
+python =  ">=3.10,<3.11"
+kedro = ">=0.18.11,<0.19.0"
+kedro-viz = "^7.1.0"
